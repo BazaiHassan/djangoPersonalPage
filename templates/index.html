@@ -88,5 +88,55 @@
       {% endfor %}
     </div>
       {% comment %} -------------- End My GitHub Repos -------------- {% endcomment %}
+
+      <container class="m-3">
+        <figure class="text-center">
+          <blockquote class="blockquote">
+            <p>Applications</p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            <cite title="Source Title">Some of them are private, at this time I cannot publish them</cite>
+          </figcaption>
+        </figure>
+      </container>
+
+      {% comment %} --------------------- my Portfolio ------------------ {% endcomment %}
+  <div class="row justify-content-center">
+    {% for portfolioItem in portfolioItems %}
+      <div onClick="" class="card m-2" style="width: 18rem;">       
+        <img src="{{ portfolioItem.cover_image.url }}" class="card-img-top text-center" alt="{{ portfolioItem.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ portfolioItem.title }}</h5>
+          {% if portfolioItem.is_public %}
+          <div class="col-s-2">
+            <span class="p-2 badge rounded-pill bg-success text-light">Public</span>
+          </div>
+          {% else %}
+          <div class="col-s-2">
+            <span class="p-2 badge rounded-pill bg-danger text-light">Private</span>
+          </div>
+          {% endif %}
+
+          <p class="card-text">{{ portfolioItem.description }}</p>
+        
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+
+
+      {% comment %} ------------------- End of My Portfolio ------------- {% endcomment %}
+
+      <container class="m-3">
+        <figure class="text-center">
+          <blockquote class="blockquote">
+            <p>Articles</p>
+          </blockquote>
+          <figcaption class="blockquote-footer">
+            <cite title="Source Title">Here I am going to share things with you about tech world</cite>
+          </figcaption>
+        </figure>
+      </container>
+
 </body>
 </html>
