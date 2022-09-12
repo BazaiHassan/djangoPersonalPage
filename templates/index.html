@@ -17,7 +17,7 @@
 <body>
     {% comment %}--------------------- Navbar ---------------------------{% endcomment %}
     <nav class="navbar navbar-light bg-light justify-content-between">
-        <a class="navbar-brand">Navbar</a>
+        <a class="navbar-brand">My Personal Website</a>
         <form class="form-inline">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Hire Me!</button>
         </form>
@@ -25,20 +25,23 @@
       {% comment %}------------------ END Navbar -----------------------{% endcomment %}
 
       {% comment %} ------------------ My Card ----------------------- {% endcomment %}
-      <section class="section about-section gray-bg mt-4" id="about">
-        <div class="container">
+      <section class="section about-section mt-4" id="about">
+        <div class="container bg-light p-3">
             <div class="row align-items-center flex-row-reverse">
-                <div class="col-lg-6">
+                <div class="col-lg-9">
                     <div class="about-text go-to">
                         <h3 class="dark-color">About Me</h3>
                         <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
                         <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
-
+                        <span class="p-2 badge rounded-pill bg-success text-light">Android Developer</span>
+                        <span class="p-2 badge rounded-pill bg-success text-light">Django Developer</span>
+                        <span class="p-2 badge rounded-pill bg-info text-light">Web Scraping</span>
+                        <span class="p-2 badge rounded-pill bg-danger text-light">Machine Learning</span>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <div class="about-avatar">
-                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
+                        <img class="img-thumbnail" src="https://www.kindpng.com/picc/m/497-4973038_profile-picture-circle-png-transparent-png.png" title="H Bazai" alt="H Bazai Avatar">
                     </div>
                 </div>
             </div>
@@ -46,24 +49,43 @@
     </section>
       {% comment %} ------------------ END My Image ------------------- {% endcomment %}
 
+      <container class="m-3">
+      <figure class="text-center">
+        <blockquote class="blockquote">
+          <p>Some of repositories</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          <cite title="Source Title">I hope you find them usefull</cite>
+        </figcaption>
+      </figure>
+    </container>
+
       {% comment %} -------------- My GitHub Repos --------------- {% endcomment %}
-      <div class="container">
-      <div class="row">
-        <div class="card m-3" style="max-width: 540px;">
-            <div class="row no-gutters">
+      
+      
+      <div class="row justify-content-center">
+        {% for githubItem in githubItems %}
+        <div class="card card-product-grid col-5 m-2">
+          <div class="card-body">
+            <a href="{{ githubItem.repository_link }}" class="text-decoration-none">
+            <div class="row">
               <div class="col-md-4 align-middle">
-                <img src="" class="card-img" alt="">
+                <img src="{{ githubItem.repository_thumbnail.url }}" class="card-img img-thumbnail" alt="{{ githubItem.repository_name }}">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  <h5 class="card-title">{{ githubItem.repository_name }}</h5>
+                  <p class="card-text">{{ githubItem.description }}</p>
+                  <p class="card-text"><small class="text-muted">{{ githubItem.modified }}</small></p>
                 </div>
               </div>
             </div>
+          </a>
           </div>
-      </div>
+          </div>
+      
+   
+      {% endfor %}
     </div>
       {% comment %} -------------- End My GitHub Repos -------------- {% endcomment %}
 </body>
